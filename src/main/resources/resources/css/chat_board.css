@@ -1,0 +1,35 @@
+
+@media screen and (max-width:768px) {
+	.chat_board {
+	border-style: double;
+	margin-top: 10px;
+	background-color: white;
+	font-family: Dotum;
+	color: black;
+	outline-offset: 30px;
+	overflow: scroll;
+	max-height: 254px;
+	height: 254px;
+	width: 95%;
+	text-align: left;
+}
+}
+
+@Media screen and (min-width:769px) {
+	.chat_board {
+	border-style: double;
+	margin-top: 10px;
+	background-color: white;
+	font-family: Dotum;
+	color: black;
+	outline-offset: 30px;
+	overflow: scroll;
+	max-height: 254px;
+	max-width: 610px;
+	height: 254px;
+	
+	width: 610px;
+	text-align: left;
+}
+}
+768px 아래로 변경되도록

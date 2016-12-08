@@ -1,0 +1,10 @@
+---
+applications:
+- name: boot_parcel
+  memory: 1024M
+  host: boot_parcel
+  domain: cfapps.io
+  buildpack: java_buildpack
+  services:
+  - RedisCloud
+  - ClearDB

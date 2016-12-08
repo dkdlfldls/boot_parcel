@@ -1,0 +1,30 @@
+.middle-align {
+	text-align: center;
+	vertical-align: middle;
+}
+.right-align {
+	text-align: right;
+	vertical-align: middle;
+}
+
+.check-box-align {
+	position: relative;
+	top: 3px;
+}
+
+.main-name {
+	text-align: left;
+}
+
+.element-visible {
+	visibility: visible;
+}
+.element-hidden {
+	visibility: hidden;
+	
+}
+
+.nsh-element-unsubstantial {
+	display: none;
+}
+
