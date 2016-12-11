@@ -21,21 +21,21 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 			.addResourceLocations("classpath:/resources/")
 			.resourceChain(true);
 	}
+	
+	
+	
 	@Bean
 	public ViewResolver viewResolver() {
-		LiteDeviceDelegatingViewResolver resolver = new LiteDeviceDelegatingViewResolver(getViewResolver());
+		InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+		internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");
+		internalResourceViewResolver.setSuffix(".jsp");
+		internalResourceViewResolver.setContentType("text/html; charset=UTF-8");
+		
+		LiteDeviceDelegatingViewResolver resolver = new LiteDeviceDelegatingViewResolver(internalResourceViewResolver);
 		resolver.setMobileSuffix("_m");
 		resolver.setEnableFallback(true);
 		return resolver;
 	}
 	
-	@Bean
-    public ViewResolver getViewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setPrefix("/WEB-INF/jsp/");
-        resolver.setSuffix(".jsp");
-        resolver.setContentType("text/html; charset=UTF-8");
-        return resolver;
-    }
 	
 }

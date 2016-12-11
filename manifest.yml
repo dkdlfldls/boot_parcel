@@ -5,6 +5,7 @@ applications:
   host: boot_parcel
   domain: cfapps.io
   buildpack: java_buildpack
+  path: target/demo-0.0.1.war
   services:
   - RedisCloud
   - ClearDB
