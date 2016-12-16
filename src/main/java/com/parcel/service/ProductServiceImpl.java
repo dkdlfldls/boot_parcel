@@ -45,7 +45,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Machine> getMachineList() {
 		System.out.println("=====getMachineList process in ProductServiceImpl=====");
-		return productRepository.getMachineList();
+		return productRepository.findAllMachineList();
 	}
 
 	@Override
@@ -79,7 +79,7 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public Product getProductInfo(int pidx) {
 		System.out.println("=====getProductInfo process in ProductServiceImpl=====");
-		return productRepository.getProductInfo(pidx);
+		return productRepository.findProductByPidx(pidx);
 	}
 
 	@Override
@@ -88,7 +88,7 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		try {
 			//1. 누가 잠그려는지 알아야한다.
-			User lock_user = userRepository.getUser(user.getIdx());
+			User lock_user = userRepository.findUserByIdx(user.getIdx());
 			//2. 잠근다.
 			productRepository.updateProductByIdxForLock(user.getProductIdx(), LOCK);
 			logService.addLog(logMaker.lockProduct(user.getIdx(), user.getProductIdx()), user, prop.getInt("productLock"));
@@ -121,7 +121,7 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		try {
 			//누가 여는가?
-			User open_user = userRepository.getUser(user.getIdx());
+			User open_user = userRepository.findUserByIdx(user.getIdx());
 			//열기
 			productRepository.updateProductByIdxForLock(user.getProductIdx(), OPEN);
 			logService.addLog(logMaker.unlockProduct(user.getIdx(), user.getProductIdx()), user, prop.getInt("productUnlock"));

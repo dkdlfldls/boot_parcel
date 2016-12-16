@@ -67,18 +67,18 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User getUser(int idx) {
 		
-		return userRepository.getUser(idx);
+		return userRepository.findUserByIdx(idx);
 	}
 
 	@Override
 	public List<MainPageEntity> getMainPageEntityList(int idx) {
-		return userRepository.getMainPageEntityList(idx);
+		return userRepository.findMainPageEntityListByIdx(idx);
 	}
 
 	@Override
 	public MainPageEntity getMainPageEntityForUserInfo(int idx) {
 		
-		return userRepository.getMainPageEntityForUserInfo(idx);
+		return userRepository.findMainPageEntityByIdx(idx);
 	}
 
 	@Override

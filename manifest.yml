@@ -2,7 +2,7 @@
 applications:
 - name: boot_parcel
   memory: 1024M
-  host: boot_parcel
+  host: bootParcel
   domain: cfapps.io
   buildpack: java_buildpack
   path: target/demo-0.0.1.war

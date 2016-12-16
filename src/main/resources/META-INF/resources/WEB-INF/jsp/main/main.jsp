@@ -35,8 +35,6 @@
 							</tr>
 						</thead>
 						<tbody class="middle-align">
-							<c:if test="${listEntity eq null }">null</c:if>
-							<c:if test="${listEntity ne null }">${listEntity}</c:if>
 							<c:forEach var="i" varStatus="status" items="${listEntity}">
 								<tr>
 									<td>${status.count }.</td>

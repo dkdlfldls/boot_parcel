@@ -17,6 +17,7 @@ public class Page {
 	private String keyword;
 	
 	private int category;
+	private String strCategory;
 	
 	public Page() {
 		this.currentPage = 1;
@@ -39,7 +40,11 @@ public class Page {
 	}
 	
 	public String getkeywordForSqlLike() {
-		return "%" + keyword + "%";
+		if (keyword == null) {
+			return "%%";
+		} else {
+			return "%" + keyword + "%";
+		}
 	}
 	
 	
@@ -131,6 +136,25 @@ public class Page {
 	public void setCategory(int category) {
 		this.category = category;
 	}
+
+	public String getStrCategory() {
+		return strCategory;
+	}
+
+	public void setStrCategory(String strCategory) {
+		this.strCategory = strCategory;
+	}
+
+	@Override
+	public String toString() {
+		return "Page [currentPage=" + currentPage + ", firstPagination=" + firstPagination + ", lastPagination="
+				+ lastPagination + ", maxPageination=" + maxPageination + ", paginationSize=" + paginationSize
+				+ ", firstContent=" + firstContent + ", lastContent=" + lastContent + ", shownContentListSize="
+				+ shownContentListSize + ", contentListSize=" + contentListSize + ", keyword=" + keyword + ", category="
+				+ category + ", strCategory=" + strCategory + "]";
+	}
+
+	
 
 	
 	

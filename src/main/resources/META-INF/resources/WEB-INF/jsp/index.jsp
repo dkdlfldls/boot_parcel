@@ -10,13 +10,21 @@
 <link rel="import" href="<spring:url value="/resources/html/include.html"/>">
 
 <script type="text/javascript">
-
+	$(function(){
+		$("#arduinoOn").click(function(){
+			$.get("http://192.168.0.15:80/", {pin:1}); // execute get request
+		});
+		$("#arduinoOff").click(function(){
+			$.get("http://192.168.0.15:80/", {pin:0}); // execute get request
+		});
+	});
 
 </script>
 
 </head>
 <body>
-	<a href="/w3">워크3다운로드</a>
+	<a href="#" id="arduinoOn">on</a>
+	<a href="#" id="arduinoOff">off</a>
 	<div class="row">
 		<div class="col-xs-2"></div>
 		<div class="col-xs-8">

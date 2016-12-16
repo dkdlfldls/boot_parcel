@@ -188,8 +188,8 @@ public class GroupServiceImpl implements GroupService {
 				//초대 및 로그
 				int r = invitationRepository.insertInviteByReceiverId(invitation);
 				
-				logService.addLog(logMaker.inviteUserById(invitation.getSender(), invitation.getReceiver_id()) , null, prop.getInt("invite"));
 				if (r > 0 ) {
+					logService.addLog(logMaker.inviteUserById(invitation.getSender(), invitation.getReceiver_id()) , null, prop.getInt("invite"));
 					return true;
 				} else {
 					return false;

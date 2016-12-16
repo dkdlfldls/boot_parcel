@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.parcel.entity.Log;
 import com.parcel.entity.Machine;
+import com.parcel.entity.Product;
 import com.parcel.util.Page;
 
 public interface AdminService {
@@ -21,5 +22,7 @@ public interface AdminService {
 	public boolean addMachine(Machine machine);
 
 	public boolean deleteMachine(Machine machine);
+
+	public List<Product> getProductList(Page page);
 
 }

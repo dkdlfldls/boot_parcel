@@ -9,21 +9,17 @@
 <link rel="import" href="<spring:url value='/resources/html/include.html'/>">
 <link rel="stylesheet" href="<spring:url value='/resources/css/nsh_public.css'/>">
 
-<script type="text/javascript" src="/resources/javascript/admin/admin_main.js"></script>
+<script type="text/javascript" src="/resources/javascript/admin/admin_product.js"></script>
 <script type="text/javascript">
 $(function(){
 	//처음에 불러오도록
-	admin.getLogByPage("log-table-body", "pagination", 1, 20, $("#category").val());	
+	admin.getLogByPageAndSearch("product-table-body", "pagination", 1, 20, $("#searchText").val(), $("#category").val(), false);
 	
 	//검색버튼
 	$("#search").click(function(){
-		admin.getLogByPageAndSearch("log-table-body", "pagination", 1, 20, $("#searchText").val(), $("#category").val());
+		admin.getLogByPageAndSearch("product-table-body", "pagination", 1, 20, $("#searchText").val(), $("#category").val(), true);
 	})
 	
-	//카테고리 변경시
-	$("#category").change(function(){
-		admin.getLogByPage("log-table-body", "pagination", 1, 20, $("#category").val());
-	})
 })
 </script>
 <body>
@@ -37,9 +33,9 @@ $(function(){
 			<br/>
 			<H2>관리자 페이지</H2>
 			<ul class="nav nav-tabs">
-				<li class="active"><a href="/admin/log">로그보기</a></li>
+				<li ><a href="/admin/log">로그보기</a></li>
 				<li><a href="/admin/machine">기종관리</a></li>
-			  	<li><a href="/admin/productPage">제품관리</a></li>
+			  	<li class="active"><a href="/admin/productPage">제품관리</a></li>
 			  	<li><a href="#">메뉴 3</a></li>
 			</ul>
 		</div>
@@ -54,16 +50,10 @@ $(function(){
 						<div class="col-sm-6 right-align">
 							<select class="form-control" style="width: 150px;" id="category">
 								<option value="0">--전체 목록--</option>
-								<option value="120">--로그인--</option>
-								<option value="110">--회원가입--</option>
-								<option value="410">--그룹 생성--</option>
-								<option value="420">--그룹 가입--</option>
-								<option value="440">--그룹 탈퇴--</option>
-								<option value="430">--그룹 삭제--</option>
-								<option value="320">--택배함 열기--</option>
-								<option value="330">--택배함 닫기--</option>
+								<option value="machine">--기종--</option>
+								<option value="machine_code">--제품 코드--</option>
+								<option value="registrant">--등록자 idx--</option>
 							</select>
-						
 						</div>
 					</div>
 					
@@ -73,15 +63,17 @@ $(function(){
 						<thead>
 							<tr>
 								<th style="width: 10%">No</th>
-								<th>내용</th>
-								<th style="width: 30%">시간</th>
+								<th>기종</th>
+								<th>제품 코드</th>
+								<th>주인ID</th>
 							</tr>
 						</thead>
-						<tbody id="log-table-body">
+						<tbody id="product-table-body">
 							<tr>
-								<td>John</td>
-								<td>Doe</td>
-								<td>john@example.com</td>
+								<td>1</td>
+								<td>큰거</td>
+								<td>123712498</td>
+								<td>main</td>
 							</tr>
 						</tbody>
 					</table>

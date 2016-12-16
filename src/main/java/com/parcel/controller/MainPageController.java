@@ -35,6 +35,7 @@ public class MainPageController {
 		
 	}
 	
+	
 	@RequestMapping("/parcel/main")
 	public String getMainPage(HttpSession session, Model model) {
 		System.out.println("parcel main : session id = " + session.getId());

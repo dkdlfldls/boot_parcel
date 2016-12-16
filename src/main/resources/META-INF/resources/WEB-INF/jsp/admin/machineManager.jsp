@@ -15,7 +15,7 @@
 	padding-top: 7px;
 }
 </style>
-<script type="text/javascript" src="/resources/js/admin/admin_machine.js"></script>
+<script type="text/javascript" src="/resources/javascript/admin/admin_machine.js"></script>
 
 
 <body>
@@ -31,7 +31,7 @@
 			<ul class="nav nav-tabs">
 				<li><a href="/admin/log">로그보기</a></li>
 				<li class="active"><a href="/admin/machine">기종관리</a></li>
-			  	<li><a href="#">제품관리</a></li>
+			  	<li><a href="/admin/productPage">제품관리</a></li>
 			  	<li><a href="#">메뉴 3</a></li>
 			</ul>
 		</div>

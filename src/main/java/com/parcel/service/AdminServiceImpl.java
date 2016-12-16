@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.parcel.entity.Log;
 import com.parcel.entity.Machine;
+import com.parcel.entity.Product;
 import com.parcel.repository.LogRepository;
 import com.parcel.repository.MachineRepository;
+import com.parcel.repository.ProductRepository;
 import com.parcel.util.Page;
 
 @Service
@@ -21,6 +21,9 @@ public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
 	private MachineRepository machineRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
 	
 	@Override
 	public List<Log> getLogList(Page page) {
@@ -89,6 +92,36 @@ public class AdminServiceImpl implements AdminService {
 			return true;
 		} else {
 			return false;
+		}
+	}
+
+	@Override
+	public List<Product> getProductList(Page page) {
+		// TODO Auto-generated method stub
+		if (page.getKeyword() == null) { //검색아님
+			if (page.getStrCategory().equals("0")) { //전체
+				System.out.println("1");
+				page.setPageInfo(productRepository.findCountProductByPage(page, false, false));
+				System.out.println(productRepository.findCountProductByPage(page, false, false));
+				return productRepository.findProductListByPage(page, false, false);
+			} else { //특정 카테고리
+				System.out.println("2");
+				page.setPageInfo(productRepository.findCountProductByPage(page, false, true));
+				System.out.println(productRepository.findCountProductByPage(page, false, true));
+				return productRepository.findProductListByPage(page, false, true);
+			}
+		} else { //검색
+			if (page.getStrCategory().equals("0")) { //전체
+				System.out.println("3");
+				page.setPageInfo(productRepository.findCountProductByPage(page, true, false));
+				System.out.println(productRepository.findCountProductByPage(page, true, false));
+				return productRepository.findProductListByPage(page, true, false);
+			} else { //특정 카테고리
+				System.out.println("4");
+				page.setPageInfo(productRepository.findCountProductByPage(page, true, true));
+				System.out.println(productRepository.findCountProductByPage(page, true, true));
+				return productRepository.findProductListByPage(page, true, true);
+			}
 		}
 	}
 

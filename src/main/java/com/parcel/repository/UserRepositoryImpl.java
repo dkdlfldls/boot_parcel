@@ -54,7 +54,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public User getUser(int idx) {
+	public User findUserByIdx(int idx) {
 		logger.info("UserRepository getUser process");
 		String sql = "SELECT * FROM user WHERE idx=? AND state=1";
 		try {
@@ -77,12 +77,16 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public List<MainPageEntity> getMainPageEntityList(int idx) {
+	public List<MainPageEntity> findMainPageEntityListByIdx(int idx) {
 		logger.info("UserRepository getMainPageEntityList process");
-		String sql = "SELECT p.public_name as pname, p.is_open as isopen, (SELECT count(gm.idx) FROM user_group ug, group_member gm WHERE ug.product = p.idx AND ug.idx=gm.group) as countg, p.idx as pidx, u.name "    
-				+ "FROM product p, user u " 
-				+ "WHERE (p.idx in (SELECT ug.product FROM user_group ug WHERE ug.idx in (SELECT gm.group FROM parcel.group_member gm WHERE gm.member=?)) OR p.registrant=?) AND u.idx=p.registrant";
-		
+		String sql ="SELECT p.public_name as pname "
+	+ ", p.is_open as ioopen " 
+    + ", (SELECT count(gm.idx) FROM user_group ug INNER JOIN group_member gm WHERE ug.product=p.idx AND ug.idx=gm.group) as countg " 
+    + ", p.idx as pidx " 
+    + ", u.name " 
++ "FROM product p INNER JOIN user u " 
++ "WHERE (p.idx in (SELECT ug.product FROM user_group ug WHERE ug.idx IN (SELECT gm.group FROM group_member gm WHERE gm.member=?)) " 
+	+ "OR p.registrant=?) AND u.idx=p.registrant";
 		//자기 택배함 은 물론 다른 사람의 택배함 그룹도 나와야한다.
 		
 		try {
@@ -102,7 +106,7 @@ public class UserRepositoryImpl implements UserRepository {
 	}
 
 	@Override
-	public MainPageEntity getMainPageEntityForUserInfo(int idx) {
+	public MainPageEntity findMainPageEntityByIdx(int idx) {
 		// TODO Auto-generated method stub
 		logger.info("UserRepository getMainPageEntityForUserInfo process");
 		String sql = "SELECT u.name, count(m.idx) as countm, u.idx " +  

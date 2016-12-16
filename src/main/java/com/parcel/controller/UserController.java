@@ -1,36 +1,25 @@
 package com.parcel.controller;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
-import java.net.URLEncoder;
-import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.bind.support.SessionStatus;
-import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.parcel.entity.User;
 import com.parcel.service.UserService;
+import com.parcel.util.IpGather;
 
 @Controller
 public class UserController{
@@ -116,5 +105,12 @@ public class UserController{
 	    
 	    return file;
 
+	}
+	
+	@RequestMapping("/test/arduino")
+	public @ResponseBody String test(HttpServletRequest req) {
+		IpGather ip = new IpGather();
+		System.out.println("receive request success : " + ip.ip(req));
+		return "test";
 	}
 }
