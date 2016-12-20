@@ -2,6 +2,10 @@ package com.parcel.entity;
 
 import java.sql.Timestamp;
 
+/**
+ * 초대 데이터 클래스
+ * @author Developer
+ */
 public class Invitation {
 	private int idx;
 	private int group_idx;

@@ -10,6 +10,11 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 import com.parcel.handler.EchoHandler;
 
+/**
+ * 웹 소켓 설정
+ * @author Developer
+ * Java Config
+ */
 @Configuration
 @EnableWebSocket
 public class WebSocketConfig extends WebMvcConfigurerAdapter implements WebSocketConfigurer {

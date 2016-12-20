@@ -4,6 +4,10 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 
+/**
+ * 사용자 데이터 클래스
+ * @author Developer
+ */
 public class User {
 	
 	private int idx;

@@ -11,6 +11,10 @@ import org.springframework.stereotype.Repository;
 import com.parcel.entity.Message;
 import com.parcel.util.Page;
 
+/**
+ * MessageRepository 구현 클래스
+ *
+ */
 @Repository
 public class MessageRepositoryImpl implements MessageRepository {
 

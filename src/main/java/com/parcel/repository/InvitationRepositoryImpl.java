@@ -11,6 +11,10 @@ import org.springframework.stereotype.Repository;
 
 import com.parcel.entity.Invitation;
 
+/**
+ * InvitationRepository 구현 클래스
+ *
+ */
 @Repository
 public class InvitationRepositoryImpl implements InvitationRepository {
 

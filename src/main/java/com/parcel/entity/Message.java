@@ -4,6 +4,10 @@ import java.sql.Timestamp;
 
 import org.hibernate.validator.constraints.Length;
 
+/**
+ * 메시지 데이터 클래스
+ * @author Developer
+ */
 public class Message {
 	private int idx;
 	private int receiver;

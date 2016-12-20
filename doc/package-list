@@ -1,0 +1,11 @@
+com.example
+com.parcel.administrator.controller
+com.parcel.aop
+com.parcel.config
+com.parcel.controller
+com.parcel.entity
+com.parcel.handler
+com.parcel.interceptor
+com.parcel.repository
+com.parcel.service
+com.parcel.util

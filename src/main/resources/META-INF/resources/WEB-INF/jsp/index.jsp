@@ -23,8 +23,10 @@
 
 </head>
 <body>
+	<!--  
 	<a href="#" id="arduinoOn">on</a>
 	<a href="#" id="arduinoOff">off</a>
+	-->
 	<div class="row">
 		<div class="col-xs-2"></div>
 		<div class="col-xs-8">

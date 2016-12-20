@@ -14,6 +14,11 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.util.FileCopyUtils;
 
+/**
+ * 파일 처리 Converter
+ * @author user
+ *
+ */
 public class FileHttpMessageConverter implements HttpMessageConverter<File> {
 
 	private List<MediaType> supportedMediaTypes = new ArrayList<MediaType>();

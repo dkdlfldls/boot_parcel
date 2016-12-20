@@ -19,6 +19,10 @@ import com.parcel.entity.User;
 import com.parcel.service.GroupService;
 import com.parcel.service.ProductService;
 
+/**
+ * Product기능 관련 Controller
+ * @author user
+ */
 @Controller
 public class ProductController{
 	
@@ -27,6 +31,11 @@ public class ProductController{
 	@Autowired
 	private GroupService groupService;
 	
+	/**
+	 * 제품 추가 요청 페이지 처리
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/product/addPage")
 	public String registerProductPage(Model model) {
 		
@@ -35,6 +44,13 @@ public class ProductController{
 		return "/parcelManager/addProductPage";
 	}
 	
+	/**
+	 * 제품 추가 요청 처리
+	 * @param session
+	 * @param product 추가 될 제품 정보
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value="/product/addProduct", method=RequestMethod.POST)
 	@ResponseBody
 	public String registerProductAndValidate(HttpSession session, @RequestBody @Valid Product product, BindingResult result) {
@@ -42,13 +58,20 @@ public class ProductController{
 		System.out.println(product.toString());
 		
 		product.setRegistrant((int)session.getAttribute("idx"));
-		String message = productService.registerProductByUser(product);
-		
-		System.out.println(message);
-		return message;
+		if (productService.registerProductByUser(product)) {
+			return "true";
+		} else {
+			return "false";
+		}
 		
 	}
 	
+	/**
+	 * 제품에 대한 상세정보 요청 페이지 처리
+	 * @param pidx
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/product/getProductInfo")
 	public String getProductInfo(int pidx, Model model) {
 		
@@ -71,6 +94,11 @@ public class ProductController{
 		return "/parcelManager/parcelInfo";
 	}
 	
+	/**
+	 * 제품 잠금 요청 처리
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping(value="/product/lock",  method=RequestMethod.POST)
 	@ResponseBody
 	public boolean lock(@RequestBody User user) {
@@ -83,6 +111,11 @@ public class ProductController{
 		}
 	}
 	
+	/**
+	 * 제품 열기 요청 처리
+	 * @param user
+	 * @return
+	 */
 	@RequestMapping(value="/product/open",  method=RequestMethod.POST)
 	@ResponseBody
 	public boolean open(@RequestBody User user) {

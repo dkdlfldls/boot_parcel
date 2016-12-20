@@ -6,6 +6,10 @@ import com.parcel.entity.Machine;
 import com.parcel.entity.Product;
 import com.parcel.util.Page;
 
+/**
+ * 제품 관련 DB작업 인터페이스
+ *
+ */
 public interface ProductRepository {
 
 	public List<Machine> findAllMachineList();

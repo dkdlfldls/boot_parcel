@@ -11,6 +11,10 @@ import com.parcel.util.TextMaker;
 import com.parcel.util.LogProperties;
 import com.parcel.util.Page;
 
+/**
+ * MessageService 인터페이스를 구현한 클래스
+ *
+ */
 @Service
 public class MessageServiceImpl implements MessageService {
 	

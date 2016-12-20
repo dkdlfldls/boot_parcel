@@ -18,6 +18,11 @@ import com.parcel.entity.ChattingVO;
 import com.parcel.entity.Message;
 
 @Component
+/**
+ * 그룹간 채팅 웹소켓 처리 핸들러
+ * @author Developer
+ * @category WebSocket
+ */
 public class EchoHandler extends TextWebSocketHandler {
 	
 	private Logger logger = LoggerFactory.getLogger(TextWebSocketHandler.class);
@@ -29,11 +34,19 @@ public class EchoHandler extends TextWebSocketHandler {
 	private final String MESSAGE = "2";
 	private final String BREAK_CONNECTION = "3";
 	
+	/**
+	 * 웹소켓 핸들러 생성자
+	 */
 	public EchoHandler() {
 		groupChattingMap = new HashMap<String, ArrayList<Socket>>();
 		errorList = new ArrayList<Socket>();
 	}
 	
+	/**
+	 * 웹소켓간 비교 방법
+	 * @author user
+	 *
+	 */
 	class Socket implements Comparable<WebSocketSession> {
 		private WebSocketSession session;
 		private int idx;
@@ -56,8 +69,7 @@ public class EchoHandler extends TextWebSocketHandler {
 	
 	
 	/**
-	 * 접속관련 이벤트 메서드
-	 * @param WebSocketSession 접속한 사용자
+	 * 접속 연결시청 이후 처리 메서드
 	 */
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session){
@@ -68,11 +80,7 @@ public class EchoHandler extends TextWebSocketHandler {
 	
 	
 	/**
-	 * 2가지 이벤트 처리
-	 * 1. send : 클라이언트가 서버로 메시지 보냄
-	 * 2. emit : 서버에 연결되어 있는 클라이언트들에게 메시지를 보냄
-	 * @param WebSocketSession 메시지를 보낸 클라이언트
-	 * @param TextMessage 메시지의 내용
+	 * 텍스트 메시지 처리 메서드
 	 */
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) {
@@ -101,17 +109,19 @@ public class EchoHandler extends TextWebSocketHandler {
 	
 	
 	/**
-	 * 클라이언트가 서버와 연결종료 
-	 * @param WebSocketSession 연결을 끊은 클라이언트
-	 * @param CloseStatus 연결 상태(확인 필요)
-	 */ 
+	 * 연결 종료 후 처리 메서드
+	 */
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status){
 		logger.info(session.getId() + "님 접속종료");
 		logger.info(status.getReason() + " " + status.getCode() + " " + status.toString());
 	}
 	
-	
+	/**
+	 * 연결 메시지 처리
+	 * @param messageVo
+	 * @param session
+	 */
 	public void connect(ChattingVO messageVo, WebSocketSession session) {
 		logger.info("그룹 채팅 접속 요청");
 		//tempConnectionList 에 있으면 꺼내서 맵으로 그룹 맞춰서
@@ -137,6 +147,11 @@ public class EchoHandler extends TextWebSocketHandler {
 		
 	}
 	
+	/**
+	 * 연결 끊기 요청 처리
+	 * @param messageVo
+	 * @param session
+	 */
 	public void breakConnection(ChattingVO messageVo, WebSocketSession session) {
 		logger.info("그룹 채팅 나가기 요청");
 		if (groupChattingMap.containsKey(messageVo.getGroup())) { //map에 해당 그룹의 리스트가 있음
@@ -151,6 +166,11 @@ public class EchoHandler extends TextWebSocketHandler {
 		} 
 	}
 	
+	/**
+	 * 메시지 보내기 요청 처리
+	 * @param messageVo
+	 * @param session
+	 */
 	public void sendMessage(ChattingVO messageVo, WebSocketSession session) {
 		if (groupChattingMap.containsKey(messageVo.getGroup())) {
 			logger.info("그룹 채팅 메시지 전송");
@@ -186,6 +206,11 @@ public class EchoHandler extends TextWebSocketHandler {
 	}
 	
 	
+	/**
+	 * 전송될 메시지 처리
+	 * @param messageVo
+	 * @return
+	 */
 	public String makeMessage(ChattingVO messageVo) {
 		if (messageVo.getType().equals(MESSAGE)) {
 			messageVo.setMessage(messageVo.getName() + " -> " + messageVo.getMessage());

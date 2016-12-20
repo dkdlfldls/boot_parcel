@@ -17,13 +17,23 @@ import com.parcel.entity.Message;
 import com.parcel.service.MessageService;
 import com.parcel.util.Page;
 
+/**
+ * Message기능 Controller
+ * @author user
+ */
 @Controller
 public class MessageController{
 
 	@Autowired
 	private MessageService messageService;
 	
-	
+	/**
+	 * 메시지 관리 페이지 요청 처리
+	 * @param model
+	 * @param session
+	 * @param page
+	 * @return
+	 */
 	@RequestMapping("/message/info")
 	public String getMessageInfo(Model model, HttpSession session, Page page) {
 		
@@ -42,6 +52,11 @@ public class MessageController{
 		return "/messageManager/MessageInfo";
 	}
 	
+	/**
+	 * 메시지 확인 요청 처리
+	 * @param message
+	 * @return
+	 */
 	@RequestMapping(value="/message/check", method=RequestMethod.POST)
 	@ResponseBody
 	public String checkMessage(@RequestBody Message message) {

@@ -8,6 +8,10 @@ import org.springframework.stereotype.Service;
 import com.parcel.entity.Log;
 import com.parcel.repository.LogRepository;
 
+/**
+ * LogService 인터페이스를 구현한 클래스
+ *
+ */
 @Service
 public class LogServiceImpl implements LogService {
 	

@@ -4,6 +4,11 @@ import org.springframework.stereotype.Component;
 
 import com.parcel.entity.User_group;
 
+/**
+ * 서비스에서 사용될 메시지를 만드는 클래스
+ * @author user
+ *
+ */
 @Component
 public class TextMaker {
 

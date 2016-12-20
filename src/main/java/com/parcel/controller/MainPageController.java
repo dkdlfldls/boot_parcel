@@ -14,6 +14,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.parcel.service.UserService;
 
+/**
+ * 메인 페이지 및 기본 페이지 Controller
+ * @author user
+ */
 @Controller
 public class MainPageController {
 	
@@ -22,6 +26,11 @@ public class MainPageController {
 	@Autowired
 	private UserService userService;
 	
+	/**
+	 * 인덱스 페이지 요청 처리
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/")
 	public String getIndexPage(HttpSession session) {
 		
@@ -35,7 +44,12 @@ public class MainPageController {
 		
 	}
 	
-	
+	/**
+	 * 메인 페이지 요청 처리
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/parcel/main")
 	public String getMainPage(HttpSession session, Model model) {
 		System.out.println("parcel main : session id = " + session.getId());
@@ -45,11 +59,19 @@ public class MainPageController {
 		
 	}
 	
+	/**
+	 * 가입 페이지 요청 처리
+	 * @return
+	 */
 	@RequestMapping("/join")
 	public String getJoinPage() {
 		return "/user/join";
 	}
 	
+	/**
+	 * 제품소개 페이지 요청 처리
+	 * @return
+	 */
 	@RequestMapping("/intro/main")
 	public String getIntroPage() {
 		return "/intro/introMain";

@@ -5,6 +5,10 @@ import java.util.List;
 import com.parcel.entity.MainPageEntity;
 import com.parcel.entity.User;
 
+/**
+ * 사용자 관련 DB작업 인터페이스
+ *
+ */
 public interface UserRepository {
 	
 	public boolean join(User user);

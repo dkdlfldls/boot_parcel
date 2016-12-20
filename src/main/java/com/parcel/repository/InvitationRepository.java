@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.parcel.entity.Invitation;
 
+/**
+ * 초대관련 DB작업 인터페이스
+ *
+ */
 public interface InvitationRepository {
 	
 	

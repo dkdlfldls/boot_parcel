@@ -45,11 +45,12 @@ $(function(){
 						public_name : $("#public_name").val()
 					}),
 					success: function(data, status){
-						if (data == "등록 완료") {
+						console.log(data);
+						if (data == "true") {
 							alert("등록이 완료되었습니다.");
 							location.href="/parcel/main";
 						} else {
-							alert(data);
+							alert("입력정보를 확인하여 주세요");
 							return;
 						}
 					}

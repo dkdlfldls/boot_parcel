@@ -14,6 +14,10 @@ import org.springframework.stereotype.Repository;
 import com.parcel.entity.Log;
 import com.parcel.util.Page;
 
+/**
+ * LogRepository 구현 클래스
+ *
+ */
 @Repository
 public class LogRepositoryImpl implements LogRepository {
 

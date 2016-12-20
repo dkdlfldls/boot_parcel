@@ -6,6 +6,10 @@ import com.parcel.entity.User_group;
 import com.parcel.entity.Group_member;
 import com.parcel.entity.User;
 
+/**
+ * 그룹관련 DB작업 인터페이스
+ *
+ */
 public interface GroupRepository {
 	
 	public User_group findGroupByProductIdx(int pidx);

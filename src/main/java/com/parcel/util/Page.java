@@ -1,5 +1,10 @@
 package com.parcel.util;
 
+/**
+ * 페이징 정보를 만드는 페이징 클래스
+ * @author user
+ *
+ */
 public class Page {
 	
 	private int currentPage;

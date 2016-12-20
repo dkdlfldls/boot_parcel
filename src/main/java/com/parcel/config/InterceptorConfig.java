@@ -9,6 +9,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import com.parcel.interceptor.ControllerSessionInterceptor;
 
+/**
+ * Interceptor를 설정한다.
+ * @author Developer
+ * Java Config
+ */
 @Configuration
 public class InterceptorConfig extends WebMvcConfigurerAdapter{
 	

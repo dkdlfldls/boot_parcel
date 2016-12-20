@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.parcel.util.Page;
 
+/**
+ * 로그 리스트 데이터 클래스
+ * @author Developer
+ */
 public class LogVO {
 	private List<Log> list;
 	private Page page;

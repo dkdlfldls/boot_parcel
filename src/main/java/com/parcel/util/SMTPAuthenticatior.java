@@ -13,6 +13,11 @@ import javax.mail.internet.MimeMessage;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * SMTP 이메일 전송 클래스
+ * @author user
+ *
+ */
 @Component
 public class SMTPAuthenticatior extends Authenticator {
 	private static String sender = "dkdlfldls@naver.com";

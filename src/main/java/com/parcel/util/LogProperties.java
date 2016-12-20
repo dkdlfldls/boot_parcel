@@ -5,6 +5,11 @@ import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Log프로퍼티를 불러서 읽는 클래스
+ * @author user
+ *
+ */
 @Component
 public class LogProperties {
 

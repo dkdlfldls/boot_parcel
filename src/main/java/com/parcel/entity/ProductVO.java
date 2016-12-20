@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.parcel.util.Page;
 
+/**
+ * 제품 리스트 데이터 클래스
+ * @author Developer
+ */
 public class ProductVO {
 	private List<Product> list;
 	private Page page;

@@ -19,6 +19,11 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.context.request.ServletWebRequest;
 
+/**
+ * Controller에 대한 AOP설정
+ * @author Spring
+ * AOP(Aspect oriented programming)
+ */
 @Aspect
 @Component
 public class ControllerAop {
@@ -34,6 +39,11 @@ public class ControllerAop {
 		BINDING_RESULT = BeanPropertyBindingResult.class;
 	}
 	
+	/**
+	 * Controller를 추적하여 시스템 로그에 기록을 남긴다.
+	 * Before 어드바이스 사용 
+	 * @param point
+	 */
 	@Before("execution(* *..*Controller.*(..))")
 	public void traceMethod(JoinPoint point) {
 		String className = point.getSignature().getDeclaringTypeName();
@@ -51,6 +61,14 @@ public class ControllerAop {
 	}
 	
 	
+	/**
+	 * valid 어노테이션을 통해 검증된 데이터를 판단하여 에러처리 할지 정상적 진행 할지 결정한다.
+	 * 포인트컷 = AndValidate(..) 
+	 * 어드바이스 = Around
+	 * @param point
+	 * @return
+	 * @throws Throwable
+	 */
 	@Around("execution(* *..*Controller.*AndValidate(..))")
 	public String checkValid(ProceedingJoinPoint point) throws Throwable {
 		logger.info("validation aop");
@@ -94,7 +112,13 @@ public class ControllerAop {
 		}
 		
 	}
-	public String makeUrl(String[] preUrl) {
+	
+	/**
+	 * checkValid 메서드에서 필요한 url을 만든다.
+	 * @param preUrl
+	 * @return
+	 */
+	private String makeUrl(String[] preUrl) {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 3; i < preUrl.length; i++) {
 			sb.append("/").append(preUrl[i]);
@@ -102,7 +126,13 @@ public class ControllerAop {
 		return sb.toString();
 	}
 	
-	public Object findObjectByClass(Object[] o, Class c) {
+	/**
+	 * o(Object배열)에 c(찾는 클래스)의 객체가 있는지 확인하여 반환한다. 
+	 * @param o Object[]
+	 * @param c Class type
+	 * @return 찾은 객체
+	 */
+	private Object findObjectByClass(Object[] o, Class c) {
 		for (int i = 0; i < o.length; i++) {
 			if (o[i].getClass() == c) {
 				return o[i];

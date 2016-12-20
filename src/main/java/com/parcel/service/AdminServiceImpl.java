@@ -13,6 +13,10 @@ import com.parcel.repository.MachineRepository;
 import com.parcel.repository.ProductRepository;
 import com.parcel.util.Page;
 
+/**
+ * AdminService 인터페이스를 구현
+ *
+ */
 @Service
 public class AdminServiceImpl implements AdminService {
 

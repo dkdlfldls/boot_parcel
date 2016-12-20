@@ -3,6 +3,11 @@ package com.parcel.util;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;
 
+/**
+ * DataSecurity를 BCrypt방법으로 구현한 클래스
+ * @author user
+ *
+ */
 @Component
 public class DataSecurityByBcrypt implements DataSecurity {
 	

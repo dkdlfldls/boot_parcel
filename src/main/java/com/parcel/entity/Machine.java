@@ -4,6 +4,10 @@ import java.sql.Timestamp;
 
 import javax.validation.constraints.Pattern;
 
+/**
+ * 기종 데이터 클래스
+ * @author Developer
+ */
 public class Machine {
 	private int idx;
 	@Pattern(regexp="^[A-Za-z0-9]{1,45}") private String machine_name; //영문자, 숫자 1~45글자

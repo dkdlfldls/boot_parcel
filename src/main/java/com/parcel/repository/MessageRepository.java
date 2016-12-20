@@ -5,6 +5,9 @@ import java.util.List;
 import com.parcel.entity.Message;
 import com.parcel.util.Page;
 
+/**
+ * 메시지 관련 DB작업 인터페이스
+ */
 public interface MessageRepository {
 
 	public int insertMessageForGroupByProductIdx(Message message, int productIdx);

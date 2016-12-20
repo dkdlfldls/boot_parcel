@@ -10,12 +10,21 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.parcel.service.UserService;
 
+/**
+ * 세션이 필요한 페이지에 대한 요청을 처리하기전
+ * 세션정보가 있는지 미리 확인하는 인터셉터
+ * @author Developer
+ */
 @Component
 public class ControllerSessionInterceptor extends HandlerInterceptorAdapter {
 	
 	@Autowired
 	private UserService userService;
 	
+	/**
+	 * 세션이 있으면 요청 처리를 진행하고
+	 * 없으면 로그인 페이지로 돌아가도록 하는 메서드
+	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		System.out.println("interceptor access");

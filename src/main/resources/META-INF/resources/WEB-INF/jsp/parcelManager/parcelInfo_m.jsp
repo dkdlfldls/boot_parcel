@@ -311,12 +311,7 @@ $(function(){
 	</c:if>
 		<c:if test="${hasGroup eq true}">
 		<c:if test="${product.registrant_name eq userEntity.name}">
-			<div data-role="controlgroup" data-type="horizontal">
-				<c:if test="${product.is_open eq 0 }"><button type="button" id="locker" data-lock="0" class="ui-btn ui-btn-inline">잠그기</button></c:if>
-				<c:if test="${product.is_open ne 0 }"><button type="button" id="locker" data-lock="1" class="ui-btn ui-btn-inline">열기</button></c:if>
-			</div>
-		</c:if>
-		<div id="checkPwForm"">
+			<div id="checkPwForm"">
 			<!-- 그룹 삭제 비밀번호 삭제부분 -->
 			<div id="checkPwHTML">
 					<label for="search-control-group">비밀번호 확인 : </label>
@@ -325,6 +320,12 @@ $(function(){
 
 			</div>
 		</div>
+		</c:if>
+			<div data-role="controlgroup" data-type="horizontal">
+				<c:if test="${product.is_open eq 0 }"><button type="button" id="locker" data-lock="0" class="ui-btn ui-btn-inline">잠그기</button></c:if>
+				<c:if test="${product.is_open ne 0 }"><button type="button" id="locker" data-lock="1" class="ui-btn ui-btn-inline">열기</button></c:if>
+			</div>
+
 		
 		<br/>
 		그룹명 : ${group.group_name }<br/>

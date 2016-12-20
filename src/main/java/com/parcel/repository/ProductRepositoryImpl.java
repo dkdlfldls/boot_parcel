@@ -17,6 +17,10 @@ import com.parcel.entity.Product;
 import com.parcel.service.ProductServiceImpl;
 import com.parcel.util.Page;
 
+/**
+ * ProductRepository 구현 클래스
+ *
+ */
 @Repository
 public class ProductRepositoryImpl implements ProductRepository {
 

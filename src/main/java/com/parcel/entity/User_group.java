@@ -4,6 +4,10 @@ import java.util.List;
 
 import javax.validation.constraints.Pattern;
 
+/**
+ * 사용자 그룹 데이터 클래스
+ * @author Developer
+ */
 public class User_group {
 	
 	private int idx;

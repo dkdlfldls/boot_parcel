@@ -2,6 +2,10 @@ package com.parcel.entity;
 
 import java.sql.Timestamp;
 
+/**
+ * 로그 데이터 클래스
+ * @author Developer
+ */
 public class Log {
 	private int idx;
 	private Integer user;

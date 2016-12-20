@@ -21,6 +21,10 @@ import com.parcel.entity.User;
 import com.parcel.service.UserService;
 import com.parcel.util.IpGather;
 
+/**
+ * 사용자 관련 Controller
+ * @author user
+ */
 @Controller
 public class UserController{
 	
@@ -34,6 +38,12 @@ public class UserController{
 	@Autowired
 	private UserService userService;
 	
+	/**
+	 * 사용자 가입 요청 처리
+	 * @param user 가입될 사용자 정보
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping("/userJoin")
 	public String joinAndValidate(@Valid User user, BindingResult result) {
 		
@@ -41,6 +51,13 @@ public class UserController{
 		return "redirect:/";
 	}
 	
+	/**
+	 * 사용자 로그인 요청 처리
+	 * @param session
+	 * @param user 로그인한 사용자 정보
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value="/userLogin", method=RequestMethod.POST)
 	public String loginAndValidate(HttpSession session, @Valid User user, BindingResult result) {
 		int idx;
@@ -64,6 +81,11 @@ public class UserController{
 		
 	}
 	
+	/**
+	 * 로그아웃 요청 처리
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		
@@ -72,6 +94,12 @@ public class UserController{
 		return "redirect:/";
 	}
 	
+	/**
+	 * 사용자 정보 수정 페이지 요청 처리
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/user/infoModify", method=RequestMethod.GET)
 	public String getUserInfoModifyPage(HttpSession session, Map<String, Object> model) {
 		int idx = (int)session.getAttribute("idx");
@@ -82,6 +110,13 @@ public class UserController{
 		return "/user/userInfoModify";
 	}
 	
+	/**
+	 * 사용자 정보 수정 요청 처리
+	 * @param session
+	 * @param user 수정될 사용자 정보
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value="/user/infoModify", method=RequestMethod.POST)
 	public String modifyUserInfoAndValidate(HttpSession session, @Valid User user, BindingResult result) {
 		System.out.println("@@@ : " + user.toString());
@@ -92,6 +127,12 @@ public class UserController{
 		return "redirect:/user/infoModify";
 	}
 
+	/**
+	 * 다운로드 테스트 요청처리
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping("/w3")
 	public @ResponseBody File w3down(HttpServletResponse response) throws Exception {
 		
@@ -107,6 +148,11 @@ public class UserController{
 
 	}
 	
+	/**
+	 * 테스트 아두이노 접속 요청 처리
+	 * @param req
+	 * @return
+	 */
 	@RequestMapping("/test/arduino")
 	public @ResponseBody String test(HttpServletRequest req) {
 		IpGather ip = new IpGather();

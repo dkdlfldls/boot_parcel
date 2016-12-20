@@ -5,6 +5,9 @@ import java.util.List;
 import com.parcel.entity.Log;
 import com.parcel.util.Page;
 
+/**
+ * 사용이력 관련 DB작업 인터페이스
+ */
 public interface LogRepository {
 	
 	//로그 입력

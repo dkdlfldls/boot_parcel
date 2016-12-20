@@ -11,6 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
+/**
+ * Spring security config
+ * @author Developer
+ * Java Config
+ */
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter  {
 	

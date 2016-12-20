@@ -13,6 +13,10 @@ import org.springframework.stereotype.Repository;
 import com.parcel.entity.MainPageEntity;
 import com.parcel.entity.User;
 
+/**
+ * UserRepository구현 클래스
+ *
+ */
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 	private Logger logger = LoggerFactory.getLogger(UserRepositoryImpl.class);

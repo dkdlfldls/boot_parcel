@@ -33,17 +33,28 @@ var clickTab = function(tabNum){
 
 	<div class="tab-content">
 		<div id="menu0" class="tab-pane fade in active">
+		<h2>원격 조정 택배함</h2>
+		<p>택배를 받을 사람이 없을 때 사용하는 택배함을</p>
+		<p>이제는 원격으로 조정하여 사용하세요</p>
+		
+		<h2>제품 특징</h2>
+			<p>인터넷에 연결할 수 있다면 지구 어디에서든 택배함을 열었다 닫었다 할 수 있습니다.</p>
+			<p>가족들과 혹은 친한 이웃들과 택배함을 함께 사용하세요</p>
+			<p></p>
+			
+			<br/>
+			<br/>
+			<h2>간단한 사용 동영상</h2>
+			<video src="/resources/video/parcel_intro.mp4" width="640" height="480" controls="controls"></video>
 			<p>1. 제품을 구매합니다.</p> 
 			<p>2. 아이디가 있는경우 로그인을 하고 없는경우 회원가입 이후 로그인을 합니다. <a onclick="clickTab(1)">==로그인/회원가입 방법==</a></p>
 			<p>3. 구매하신 제품을 등록합니다. <a onclick="clickTab(2)">==제품 등록/사용 방법==</a></p>
 			<p>4. 제품관리 메뉴에 등록된 제품을 사용할 수 있으며 필요에 따라 다른 사람들과 함께 사용할 수 있습니다.</p>
-			<p>5. 다른 사람과 함께 사용하려면 그룹을 만들어서 다른 사람들을 초대하거나 들어올 수 있도록 그룹정보를 알려줍니다.</p>
 			<p><a onclick="clickTab(3)">==그룹 생성/관리 방법==</a></p>
-			<p><a onclick="clickTab(4)">==그룹에 초대/다른 그룹 가입 방법==</a></p>
 			<p>이 외 정보를 알고싶으시다면 해당페이지의 다른 메뉴들도 읽어주세요. </p>
 			<p>감사합니다.</p>
 		</div>
-		<div id="menu1" class="tab-pane fade in active">
+		<div id="menu1" class="tab-pane fade">
 			<h3>1-1. 로그인</h3>
 			<img src="/resources/image/intro/1/loginIntro.png" class="img-rounded" width="708" height="532">
 			<h3>1-2. 회원가입</h3>

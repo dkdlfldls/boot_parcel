@@ -1,5 +1,9 @@
 package com.parcel.entity;
 
+/**
+ * 그룹 멤버 데이터 클래스
+ * @author Developer
+ */
 public class Group_member {
 	private int idx;
 	private int group;

@@ -4,6 +4,11 @@ import java.util.HashMap;
 
 import com.google.gson.Gson;
 
+/**
+ * 채팅 데이터 클래스
+ * @author Developer
+ *
+ */
 public class ChattingVO {
 
 	private String message;

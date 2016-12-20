@@ -19,6 +19,10 @@ import com.parcel.repository.UserRepository;
 import com.parcel.util.TextMaker;
 import com.parcel.util.LogProperties;
 
+/**
+ * ProductSerivce 인터페이스를 구현한 클래스
+ *
+ */
 @Service
 public class ProductServiceImpl implements ProductService{
 
@@ -49,7 +53,7 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public String registerProductByUser(Product product) {
+	public boolean registerProductByUser(Product product) {
 		//1. 등록이 되어있는지 부터 확인한다.
 		//2. 등록이 되어있다면 등록된 제품이라고 알려주고 등록이 안되어 있다면 update를 시작한다.
 		//3. 업데이트에 실패하면 입력 확인하라고 알려준다.
@@ -57,19 +61,19 @@ public class ProductServiceImpl implements ProductService{
 		System.out.println("=====addProduct process in ProductServiceImpl=====");
 		Product temp = productRepository.findProductByMachineAndMachine_code(product);
 		if (temp == null) {
-			return "입력 정보를 확인하여 주세요";
+			return false;
 		} else {
 			System.out.println("@@@@" + temp.toString());
 			if (temp.getRegistrant() > 0) {
-				return "이미 등록된 제품입니다.";
+				return false;
 			} else {
 				//등록 시작
 				int result = productRepository.updateProduct(product);
 				if (result > 0 ) {
 					logService.addLog(logMaker.registerProduct(product.getRegistrant(), temp.getIdx()), temp, prop.getInt("addProduct"));
-					return "등록 완료";
+					return true;
 				} else {
-					return "입력 정보를 확인하여 주세요";
+					return false;
 				}
 			}
 		}

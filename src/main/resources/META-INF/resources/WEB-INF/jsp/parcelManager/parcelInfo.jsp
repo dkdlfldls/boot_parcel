@@ -62,6 +62,7 @@ $(function(){
 			success : function(data, status) {
 				if (data == true) {
 					$("#locker").val("잠그기");
+					$("#isOpen").text("사용가능");
 				} else {
 					alert("열기 실패");
 				}
@@ -83,6 +84,7 @@ $(function(){
 			success: function(data, status){
 				if (data == true) {
 					$("#locker").val("열기");
+					$("#isOpen").text("사용중");
 				} else {
 					alert("잠그기 실패");
 				}
@@ -210,7 +212,7 @@ $(function(){
 								<td class="success 15per">이름 : </td>
 								<td>${product.public_name }</td>
 								<td class="success 15per">개폐상태</td>
-								<td>
+								<td id="isOpen">
 									<c:if test="${product.is_open eq 0 }">사용가능</c:if>
 									<c:if test="${product.is_open ne 0 }">사용중</c:if>
 								</td>

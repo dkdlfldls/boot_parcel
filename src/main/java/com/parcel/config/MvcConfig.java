@@ -9,6 +9,11 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+/**
+ * ViewResolver, ResourceHanler 설정
+ * @author user
+ *
+ */
 @Configuration
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
@@ -21,8 +26,6 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 			.addResourceLocations("classpath:/resources/")
 			.resourceChain(true);
 	}
-	
-	
 	
 	@Bean
 	public ViewResolver viewResolver() {

@@ -14,6 +14,10 @@ import org.springframework.stereotype.Repository;
 import com.parcel.entity.Machine;
 import com.parcel.util.Page;
 
+/**
+ * MachineRepository 구현 클래스
+ *
+ */
 @Repository
 public class MachineRepositoryImpl implements MachineRepository {
 	private Logger logger = LoggerFactory.getLogger(MachineRepositoryImpl.class);

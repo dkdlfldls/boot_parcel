@@ -1,6 +1,5 @@
 package com.parcel.config;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
@@ -8,6 +7,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 
+/**
+ * 프로퍼티 설정
+ * 사용할 프로퍼티가 있다면 이 곳 에서 설정
+ * @author Developer
+ * Java Config
+ *
+ */
 @Configuration
 public class PropertiesConfig {
 

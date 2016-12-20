@@ -4,6 +4,10 @@ import java.sql.Timestamp;
 
 import javax.validation.constraints.Pattern;
 
+/**
+ * 제품 데이터 클래스
+ * @author Developer
+ */
 public class Product {
 	private int idx;
 	private int machine;

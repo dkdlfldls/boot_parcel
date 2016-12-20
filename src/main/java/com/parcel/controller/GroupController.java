@@ -22,6 +22,10 @@ import com.parcel.entity.Invitation;
 import com.parcel.entity.User_group;
 import com.parcel.service.GroupService;
 
+/**
+ * Group관련 Controller
+ * @author user
+ */
 @Controller
 public class GroupController {
 	
@@ -32,6 +36,12 @@ public class GroupController {
 	@Autowired
 	private GroupService groupService;
 	
+	/**
+	 * 그룹 관리 페이지 요청 처리
+	 * @param session
+	 * @param model
+	 * @return 그룹 관리 페이지 뷰
+	 */
 	@RequestMapping("/group/groupInfo")
 	public String getGroupInfo(HttpSession session, Model model) {
 		
@@ -41,6 +51,10 @@ public class GroupController {
 		return "/groupManager/groupInfo";
 	}
 
+	/**
+	 * 그룹 생성시 필요한 코드 요청 처리
+	 * @return 그룹 코드
+	 */
 	@RequestMapping(value="/group/makeGroupCode", method=RequestMethod.POST)
 	@ResponseBody
 	public String makeGroupCode() {
@@ -55,6 +69,14 @@ public class GroupController {
 		//코드를 만든다음 user_group 테이블에 있는지 확인하고 없으면 보내주고 있으면 다시 만들고만들고...하다가 보내준다
 		
 	}
+	
+	/**
+	 * 그룹 추가 처리
+	 * @param session
+	 * @param group 추가 될 그룹 정보
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value="/group/addGroup", method=RequestMethod.POST)
 	public String addGroupAndValidate(HttpSession session, @RequestBody @Valid User_group group, BindingResult result) {
 		//그룹을 추가하고 (코드 중복으로 인해 실패할 수 있음 -->재수없게 동시에 두 코드가 중복되서 누군가 먼저 넣은경우)
@@ -69,8 +91,10 @@ public class GroupController {
 		
 	}
 	
-	/*
-	 * session에 user_group을 넣어서 보내야만 반환해줌
+	/**
+	 * 세션에 담겨있는 그룹 정보를 반환해주는 요청 처리 메서드
+	 * @param session
+	 * @return
 	 */
 	@RequestMapping(value="/group/sendGroup", method=RequestMethod.POST)
 	public @ResponseBody User_group sendGroup(HttpSession session) {
@@ -79,6 +103,12 @@ public class GroupController {
 		return temp;
 	}
 	
+	/**
+	 * 그룹 삭제 요청 처리
+	 * @param group 삭제 될 그룹 정보
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value="/group/deleteGroup", method=RequestMethod.POST)
 	@ResponseBody
 	public int deleteGroup(@RequestBody User_group group, HttpSession session) {
@@ -86,6 +116,12 @@ public class GroupController {
 		
 	}
 	
+	/**
+	 * 그룹 가입 페이지 요청 처리
+	 * @param msg
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/group/joinGroup")
 	public String getJoinGroupPage(@RequestParam(name="msg", required=false) String msg, Model model) {
 		
@@ -96,6 +132,14 @@ public class GroupController {
 		return "/groupManager/groupJoinPage";
 	}
 	
+	/**
+	 * 그룹 가입 요청 처리
+	 * @param session
+	 * @param model
+	 * @param group 가입할 그룹에 대한 정보
+	 * @param result
+	 * @return
+	 */
 	@RequestMapping(value="/group/joinGroup", method=RequestMethod.POST)
 	public String joinGroupAndValidate(HttpSession session, RedirectAttributes model, @Valid User_group group, BindingResult result) {
 		if (groupService.joinGroup(group.getCode(), group.getPw(), (int)session.getAttribute("idx"))) {
@@ -106,6 +150,12 @@ public class GroupController {
 		}
 	}
 	
+	/**
+	 * 그룹 탈퇴 요청 처리
+	 * @param gidx 탈퇴할 그룹 인덱스
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value="/group/drop/{gidx}")
 	public String dropGroup(@PathVariable int gidx, HttpSession session) {
 		boolean r = groupService.dropGroup(gidx, (int)session.getAttribute("idx"));
@@ -113,6 +163,12 @@ public class GroupController {
 		return "redirect:/group/groupInfo";
 	}
 	
+	/**
+	 * 타 사용자 그룹 초대 페이지
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/group/invite",  method=RequestMethod.GET)
 	public String showInvitePage(HttpSession session, Model model) {
 		//1. 현재 내 그룹 리스트
@@ -122,7 +178,11 @@ public class GroupController {
 		return "/groupManager/groupInvitationPage";
 	}
 	
-	
+	/**
+	 * 타 사용자 그룹 초대 처리
+	 * @param invitation
+	 * @return
+	 */
 	@RequestMapping(value="/group/invite", method=RequestMethod.POST)
 	public @ResponseBody String inviteAndValidate(@RequestBody Invitation invitation ) {
 		try {
@@ -146,7 +206,12 @@ public class GroupController {
 		}
 	}
 	
-	
+	/**
+	 * 초대받은 초대내역 페이지 요청 처리
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/group/invitedList",  method=RequestMethod.GET)
 	public String showInvitedList(HttpSession session, Model model) {
 		
@@ -157,7 +222,13 @@ public class GroupController {
 	
 	
 	
-	//취소
+	/**
+	 * 타 사용자 초대 취소 처리
+	 * @param invitation
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/group/cancle", method=RequestMethod.POST)
 	public String cancleInvitation(Invitation invitation, HttpSession session, Model model) {
 		int ownerIdx = (int)session.getAttribute("idx");
@@ -174,7 +245,14 @@ public class GroupController {
 		}
 		return "redirect:/group/invite";
 	}
-	//수락 및 거절
+	
+	/**
+	 * 그룹에 초대받은 거에 대하여 수락 및 거절 처리
+	 * @param invitation
+	 * @param session
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/group/permit", method=RequestMethod.POST)
 	public String permitInvitation(Invitation invitation, HttpSession session, Model model) {
 		System.out.println(invitation.isAcceptanceValue());
@@ -192,7 +270,10 @@ public class GroupController {
 		return "redirect:/group/invitedList";
 	}
 	
-	//모바일 그룹생성 페이지
+	/**
+	 * 모바일 그룹 생성 페이지 요청 처리
+	 * @return
+	 */
 	@RequestMapping("/group/groupMakePage")
 	public String getGroupMakePage() {
 		

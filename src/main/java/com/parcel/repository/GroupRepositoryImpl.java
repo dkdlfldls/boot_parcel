@@ -13,6 +13,10 @@ import com.parcel.entity.Group_member;
 import com.parcel.entity.User;
 import com.parcel.entity.User_group;
 
+/**
+ * GroupRepository 구현 클래스
+ *
+ */
 @Repository
 public class GroupRepositoryImpl implements GroupRepository {
 

@@ -4,7 +4,11 @@ import java.util.Random;
 
 import org.springframework.stereotype.Component;
 
-
+/**
+ * 서비스에서 사용될 코드를 만드는 클래스
+ * @author user
+ *
+ */
 //bcrypt를 통한 암호화 이러다보니 decode불가능
 @Component
 public class UserCodeMaker implements CodeMaker{
